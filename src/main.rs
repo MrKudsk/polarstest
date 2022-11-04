@@ -12,8 +12,6 @@ fn main() -> Result<()> {
         .bytes()
         .collect();
 
-    dbg!(data);
-
     let df = CsvReader::new(Cursor::new(data))
         .has_header(true)
         .finish()?

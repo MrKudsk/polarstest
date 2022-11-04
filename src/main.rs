@@ -1,6 +1,7 @@
 use color_eyre::{Result};
 use polars::{prelude::*};
 use reqwest::blocking::Client;
+use std::io::Cursor;
 
 fn main() -> Result<()> {
     println!("Hello, world!");
@@ -10,6 +11,8 @@ fn main() -> Result<()> {
         .text()?
         .bytes()
         .collect();
+
+    dbg!(data);
 
     let df = CsvReader::new(Cursor::new(data))
         .has_header(true)
